@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.log
+*.csv
+yolov8n_ncnn_model/
+*.pt
+*.onnx
+.env
