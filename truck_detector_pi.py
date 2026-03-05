@@ -375,7 +375,11 @@ def main():
     frame_us = int(1_000_000 / TARGET_FPS)
     config = cam.create_preview_configuration(
         main={"size": CAPTURE_SIZE, "format": "RGB888"},
-        controls={"FrameDurationLimits": (frame_us, frame_us)},
+        controls={
+            "FrameDurationLimits": (frame_us, frame_us),
+            "AeEnable": True,   # auto-exposure on
+            "AwbEnable": True,  # auto white balance on
+        },
         buffer_count=2,
     )
     cam.configure(config)
