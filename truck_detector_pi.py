@@ -187,7 +187,7 @@ def poll_telegram_commands():
                 cid  = msg.get("chat", {}).get("id")
                 if not cid:
                     continue
-                if text == "any opps?":
+                if text == "a":
                     with frame_lock:
                         jpg = bytes(frame_buf["jpg"])
                     if jpg:
@@ -197,14 +197,14 @@ def poll_telegram_commands():
                             files={"photo": ("snap.jpg", io.BytesIO(jpg), "image/jpeg")},
                             timeout=20,
                         )
-                        log.info(f"Snapshot sent in reply to 'any opps?' from {cid}")
+                        log.info(f"Snapshot sent in reply to 'a' from {cid}")
                     else:
                         requests.post(
                             f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage",
                             data={"chat_id": cid, "text": "Camera not ready yet, try again."},
                             timeout=10,
                         )
-                elif text == "run":
+                elif text == "r":
                     if run_event.is_set():
                         requests.post(
                             f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage",
@@ -215,7 +215,7 @@ def poll_telegram_commands():
                         log.info("Start command received via Telegram.")
                         stop_event.clear()
                         run_event.set()
-                elif text == "stop":
+                elif text == "s":
                     if not run_event.is_set():
                         requests.post(
                             f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage",
