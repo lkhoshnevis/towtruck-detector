@@ -280,10 +280,10 @@ def run_detection(cam, model):
             telegram_message(f"📷 Camera error — detection stopped: {e}\nCheck the ribbon cable.")
             break
 
-        # ── crop: keep 90% of frame (slight zoom in), shifted up 50px ───
+        # ── crop: keep 60% of frame (zoom in 30%), shifted up 50px ──────
         h, w = frame.shape[:2]
-        crop_h = int(h * 0.90)
-        crop_w = int(w * 0.90)
+        crop_h = int(h * 0.60)
+        crop_w = int(w * 0.60)
         y1 = max(0, (h - crop_h) // 2 - 50)
         x1 = (w - crop_w) // 2
         frame = frame[y1:y1 + crop_h, x1:x1 + crop_w]
