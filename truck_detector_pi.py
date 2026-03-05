@@ -38,7 +38,7 @@ MODEL_NAME       = "yolov8n_ncnn_model"
 CONF_THRESH      = 0.45
 SHOW_PREVIEW     = False  # set True when HDMI is connected locally
 STREAM_PORT      = 9090   # MJPEG stream port — view at http://localhost:9090 via SSH tunnel
-CAPTURE_SIZE     = (1296, 972)  # 4:3 native sensor mode for max quality
+CAPTURE_SIZE     = (2592, 1944) # full sensor resolution, no binning = sharpest
 TARGET_FPS       = 15           # lock camera + loop to this rate to eliminate buffer lag
 TEMP_WARN_C      = 80           # °C — send Telegram alert above this
 
