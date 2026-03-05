@@ -38,7 +38,7 @@ MODEL_NAME       = "yolov8n_ncnn_model"
 CONF_THRESH      = 0.45
 SHOW_PREVIEW     = False  # set True when HDMI is connected locally
 STREAM_PORT      = 9090   # MJPEG stream port — view at http://localhost:9090 via SSH tunnel
-CAPTURE_SIZE     = (1296, 972)  # 4:3 high-res capture; 50% crop = 648x486 for inference
+CAPTURE_SIZE     = (1296, 972)  # 4:3 native sensor mode for max quality
 TARGET_FPS       = 15           # lock camera + loop to this rate to eliminate buffer lag
 TEMP_WARN_C      = 80           # °C — send Telegram alert above this
 
@@ -280,10 +280,10 @@ def run_detection(cam, model):
             telegram_message(f"📷 Camera error — detection stopped: {e}\nCheck the ribbon cable.")
             break
 
-        # ── crop: 50% of frame (2x zoom), shifted up 50px ────────────────
+        # ── crop: keep 90% of frame (slight zoom in), shifted up 50px ───
         h, w = frame.shape[:2]
-        crop_h = int(h * 0.50)
-        crop_w = int(w * 0.50)
+        crop_h = int(h * 0.90)
+        crop_w = int(w * 0.90)
         y1 = max(0, (h - crop_h) // 2 - 50)
         x1 = (w - crop_w) // 2
         frame = frame[y1:y1 + crop_h, x1:x1 + crop_w]
@@ -306,7 +306,7 @@ def run_detection(cam, model):
                     cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
 
         # ── Push to MJPEG stream ───────────────────────────────────────────
-        _, jpg_buf = cv2.imencode(".jpg", display, [cv2.IMWRITE_JPEG_QUALITY, 95])
+        _, jpg_buf = cv2.imencode(".jpg", display, [cv2.IMWRITE_JPEG_QUALITY, 70])
         with frame_lock:
             frame_buf["jpg"] = jpg_buf.tobytes()
 
