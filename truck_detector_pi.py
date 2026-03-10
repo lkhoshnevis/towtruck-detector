@@ -19,6 +19,9 @@ import threading
 import numpy as np
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from socketserver import ThreadingMixIn
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class ThreadedHTTPServer(ThreadingMixIn, HTTPServer):
     allow_reuse_address = True
@@ -28,8 +31,8 @@ from ultralytics import YOLO, settings
 from datetime import datetime
 
 # ── Config ────────────────────────────────────────────────────────────────────
-TELEGRAM_TOKEN   = "REMOVED"
-CHAT_ID          = "REMOVED"
+TELEGRAM_TOKEN   = os.environ["TELEGRAM_TOKEN"]
+CHAT_ID          = os.environ["CHAT_ID"]
 TRUCK_CLASS      = 7       # COCO class 7 = truck
 COOLDOWN         = 30      # seconds between Telegram alerts
 LOG_INTERVAL     = 60      # seconds between CSV rows
