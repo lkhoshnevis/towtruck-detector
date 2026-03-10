@@ -1,3 +1,13 @@
+Never let your corrupt property managers tow your car ever again!!!
+
+Note: you can use a standard Yolov8n Truck detection model, but I fine-tuned my own towtruck model with higher accuracy than Yolo:
+tow-truck-object-detection-uglkp/2
+
+<img width="487" height="669" alt="Screenshot 2026-03-10 at 3 51 50 PM" src="https://github.com/user-attachments/assets/cc00c85a-0291-4c8a-a044-644d98d6bd41" />
+![IMG_7368](https://github.com/user-attachments/assets/4b2398b6-30fa-408f-a086-1ea8fdd8abc9)
+
+
+
 # Towtruck Detector
 
 A lightweight, always-on truck detection system running on a Raspberry Pi. Captures live video from a CSI camera, runs YOLOv8 inference locally, and sends instant Telegram alerts with a photo when a truck is spotted — no cloud required.
@@ -118,46 +128,3 @@ Check status:
 sudo systemctl status truck-detector
 journalctl -u truck-detector -f
 ```
-
----
-
-## Live Stream
-
-While running, an MJPEG stream is available on port 9090. Forward it over SSH to view on your laptop:
-
-```bash
-ssh -L 9090:localhost:9090 pi@<pi-ip>
-```
-
-Then open `http://localhost:9090` in your browser.
-
----
-
-## Photos
-
-### Camera Setup
-![Camera mounted on Pi](images/camera_setup.jpg)
-
-### Detection in Action
-![Truck detected with bounding box](images/detection_result.jpg)
-
-### Telegram Alert
-![Telegram notification with annotated photo](images/telegram_alert.jpg)
-
-> Replace these placeholder images with your own. Put photos in an `images/` folder in the repo root.
-
----
-
-## Who Can Use This
-
-Anyone with a Raspberry Pi 5 and a CSI camera who wants passive, local truck detection — no subscription, no cloud, no fees. Useful for:
-
-- Monitoring a driveway or street for delivery trucks / tow trucks
-- Security setups where you want truck-specific alerts
-- Learning how to run YOLOv8 on edge hardware
-
----
-
-## License
-
-MIT
