@@ -4,8 +4,13 @@ Note: you can use a standard Yolov8n Truck detection model, but I fine-tuned my 
 tow-truck-object-detection-uglkp/2
 
 <img width="487" height="669" alt="Screenshot 2026-03-10 at 3 51 50 PM" src="https://github.com/user-attachments/assets/cc00c85a-0291-4c8a-a044-644d98d6bd41" />
-![IMG_7368](https://github.com/user-attachments/assets/4b2398b6-30fa-408f-a086-1ea8fdd8abc9)
 
+![IMG_7326](https://github.com/user-attachments/assets/570f0847-ec59-4373-b1a6-bf76120a82c8)
+
+![IMG_2645](https://github.com/user-attachments/assets/0d85a8b7-9365-4eb2-8099-edd8cdd5e9d0)
+
+
+<img width="921" height="518" alt="IMG_7368" src="https://github.com/user-attachments/assets/22671005-9165-4af7-a799-2607dceda3ee" />
 
 
 # Towtruck Detector
